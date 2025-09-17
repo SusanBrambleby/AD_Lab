@@ -8,6 +8,7 @@ This lab demonstrates a Windows Server 2019 Domain Controller (DC) with a Window
 - Organizational Units (OUs)
 - Users and Groups
 - Group Policy Object (GPO) testing
+- pinging to DC
 
 ## Lab Setup
 
