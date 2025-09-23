@@ -1,35 +1,61 @@
-# AD_Lab
-Active Directory Lab: Windows Server 2019 DC + Windows 10 client + GPO testing
-# Active Directory Lab
+# Active Directory + File Share Lab
 
-## Overview
-This lab demonstrates a Windows Server 2019 Domain Controller (DC) with a Windows 10 client. It includes:
-- Active Directory setup
-- Organizational Units (OUs)
-- Users and Groups
-- Group Policy Object (GPO) testing
-- pinging to DC
+This project demonstrates a basic **Windows Server 2019 Active Directory Domain Controller** setup with **Windows 10 clients**, including:
+- Active Directory Users and Computers (ADUC) management
+- File Share permissions with NTFS and Share Security
+- Group Policy Object (GPO) application
 
-## Lab Setup
+---
 
-1. **VMware Workstation Pro 17**  
-2. **Windows Server 2019 ISO** → Domain Controller  
-3. **Windows 10 ISO** → Client VM  
-4. **Network:** Host-Only (VMnet1), DC IP: 192.168.31.10, Client IP: 192.168.31.11
+## ⚙️ Lab Setup
+- **Domain Controller:** Windows Server 2019 (DC01)
+- **Client:** Windows 10 (Client)
+- **Domain:** lab.local
 
-## Screenshots
+---
 
-### 1. VM Overview
-![VMs](screenshots/vms.png)
+## 👤 Active Directory
+Created two OUs:
+- `HR_OU`
+- `IT_OU`
 
-### 2. Active Directory Users and Computers
-![ADUC](screenshots/aduc.png)
+Users:
+- `hr_user1` in `HR_OU`
+- `it_user1` in `IT_OU`
 
-### 3. Test GPO Applied (Desktop Wallpaper)
-![GPO](screenshots/gp.png)
+📸 Screenshots:
+- ![ADUC Users](screenshots/01-ADUC-Users.png)
+- ![ADUC Computers](screenshots/02-ADUC-Computers.png)
 
-### 4. Windows 10 Client Logged into Domain
-![Client Login](screenshots/client-login.png)
+---
 
-### 5. Ping Test
-![Ping](screenshots/ping.png)
+## 📂 File Shares
+Created two shared folders on the DC:
+- `HR_Files` → accessible only to `HR_Group`
+- `IT_Files` → accessible only to `IT_Group`
+
+📸 Screenshots:
+- ![HR Share](screenshots/03-Share-HR.png)
+- ![IT Share](screenshots/04-Share-IT.png)
+
+---
+
+## 🔑 Access Control Testing
+- ✅ `hr_user1` → Access to HR_Files  
+- ❌ `hr_user1` → Denied from IT_Files  
+- ✅ `it_user1` → Access to IT_Files  
+
+📸 Screenshots:
+- ![HR Access](screenshots/05-Client-HR_Access.png)
+- ![HR Denied IT](screenshots/06-Client-HR_Denied.png)
+- ![IT Access](screenshots/07-Client-IT_Access.png)
+
+---
+
+## 🖥️ Group Policy
+Created a test GPO `TestPolicy` linked to `HR_OU`.  
+Policy: Set custom desktop wallpaper.
+
+📸 Screenshots:
+GPO Linked](screenshots/08-GPO-Linked.png)
+[GPO Applied](screenshots/09-GPO-Result.png)
