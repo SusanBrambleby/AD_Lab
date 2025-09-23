@@ -24,7 +24,7 @@ Users:
 - `it_user1` in `IT_OU`
 
 📸 Screenshots:
-- ![ADUC Users] (AD_Lab/ADUC with OUs,groups.png)
+- ![ADUC Users] (ADUC with OUs,groups.png)
 - ![ADUC Computers](screenshots/02-ADUC-Computers.png)
 
 ---
